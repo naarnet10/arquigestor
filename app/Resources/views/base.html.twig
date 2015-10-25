@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}Gestoría Arquitectónica de la Ciudad de México{% endblock %}</title>
+        {% block stylesheets %}
+            {# homepage#}
+            <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.css')}}">
+
+            <link rel="stylesheet" href="{{asset('bundles/gestoria/css/style.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/gestoria/css/fontgoogleapis.css')}}">
+            <link rel="stylesheet" href="{{asset('bundles/gestoria/css/italic.css')}}">
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </head>
+    <body>
+        {% block body %}
+
+
+        {% endblock %}
+        {% block javascripts %}
+
+            <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('bundles/gestoria/js/move-top.js')}}"></script>
+            <script type="text/javascript" src="{{asset('bundles/gestoria/js/easing.js')}}"></script>
+            <script type="text/javascript" src="{{asset('bundles/gestoria/js/gestoria.js')}}"></script>
+        {% endblock %}
+    </body>
+

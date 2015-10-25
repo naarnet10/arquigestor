@@ -1,0 +1,45 @@
+
+
+<FORM >
+    <P>
+    Entrada: <INPUT type="text" name="entrada" id="value"><BR>
+    
+    <INPUT id="button" type="button" value="Enviar">
+    </P>
+ </FORM>
+
+<script src="{{asset('bundles/gestoria/js/jquery/jquery.min.js')}}"></script>
+<script type="text/javascript">
+    var routes = {
+        test : "{{ path('test_value') }}",}
+    $( document ).ready(function() {
+        
+        $( "#button" ).click(function() {
+            
+            var test = $('#value').val();
+            var params = {'value': test};
+            $.ajax({
+                url: routes.test,
+                data: params,
+                method: 'POST',
+                success: function (data) {
+                    
+                    var hundred = data.hundred;
+                    var fifty= data.fifty;
+                    var twenty = data.twenty;
+                    var ten = data.ten;
+                    alert("[De 100 :     "+hundred+",De 50:   "+fifty+",De 20  :"+twenty+",De 10:   "+ten+"]");
+                    
+                },
+                error: function (data) {
+                    
+                    alert("throw InvalidArgumentException");
+                }
+            });
+            
+         });
+        
+    });
+    
+</script>
+     

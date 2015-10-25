@@ -1,0 +1,242 @@
+<script type="text/javascript">
+    require.config({
+        baseUrl: 'js',
+        waitSeconds: 200,
+        paths: {
+            
+
+            //jquery
+            jquery: '{{asset('vendor/jquery-2.1.4.min')}}',
+            jquerymin: '{{asset('vendor/jquery.min')}}',
+            
+           //MediaManager para el builder (selección y subida de imágenes y archivos)
+           mediaManager: "{{ asset('bundles/cms/js/mediaManager') }}",
+           bootstrap_editable : "{{asset('vendor/bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable.min')}}",
+           address: "{{asset('bundles/socialnetwork/js/address')}}",
+           js_grid: "{{asset('bundles/socialnetwork/js/jsgrid.min')}}",      
+           echarts: "{{ asset('vendor/echarts-2.2.4/build/dist/echarts-all') }}",
+           combodate: "{{asset('bundles/socialnetwork/js/combodate')}}",
+           moment: "{{asset('bundles/socialnetwork/js/moment')}}",
+
+            modalCC: "{{ asset('bundles/company/js/modalCreditCard') }}"
+
+        },
+
+        shim: {
+            underscore: {
+                exports: '_'
+            },
+            backbone: {
+                deps: ["underscore", "jquery"],
+                exports: "Backbone"
+            },
+
+            backbone_undo: {
+                deps: ["backbone"],
+                exports: "Backbone_undo"
+            },
+            jquery_ui: {
+                deps: ["jquery"],
+                exports: "jquery_ui"
+            },
+            sites: {
+                deps: ["jquery","jquery_ui"],
+                exports: "sites"
+
+            },
+            formbuilder: {
+                deps:["jquery","bootstrap"]
+            },
+            trip: {
+              exports: "trip"
+            },
+            caman: {
+                deps:["jquery"],
+                exports: "Caman"
+            },
+            jic: {
+              exports:"jic"
+            },
+            nestable: {
+                deps: ["jquery"],
+                exports: "nestable"
+            },
+            slimscroll:{
+                deps: ["jquery"]
+            },
+
+            cropper:{
+                deps:["jquery","bootstrap"]
+            },
+
+            youtubebg:{
+                deps:["jquery"]
+            },
+
+            bootstrap: {
+                deps: ["jquery","jquery_ui"],
+                exports: "bootstrap"
+            },
+            spinner: {
+                deps: ["jquery","bootstrap"],
+                exports: "spinedit"
+            },
+            contextmenu: {
+                deps: ["jquery"]
+            },
+            typeahead: {
+                deps: ["jquery", "bootstrap","jquery_ui"],
+                exports: "typeahead"
+            },
+            bootbox: {
+                deps: ["jquery","bootstrap"],
+                exports: "bootbox"
+            },
+
+            bootstrapSlider: {
+                deps: ["jquery"]
+            },
+
+            customSelect: {
+                deps: ["jquery"]
+            },
+            fullcalendar: {
+                deps: ["jquery"],
+                exports: "fullcalendar"
+            },
+            colorpicker: {
+                deps: ["jquery", "bootstrap"],
+                exports: "colorpicker"
+            },
+            datetimepicker: {
+                deps: ["jquery", "bootstrap"],
+                exports: "datetimepicker"
+            },
+            html2canvas: {
+                deps: ["jquery"],
+                exports: "html2canvas"
+            },
+            dragcrop: {
+                deps: ["jquery"],
+                exports: "dragcrop"
+            },
+            pace: {
+                exports: "Pace"
+            },
+            story_box: {
+                deps: ["jquery"],
+                exports: "StoryBox"
+            },
+            ckeditor: {
+                deps: ["jquery"],
+                exports: "CKEDITOR"
+            },
+            fixtext: {
+                deps: ["jquery"],
+                exports: "fitText"
+            },
+            app: {
+                deps: ["jquery", "jquery_ui", "bootstrap"],
+                exports: "app"
+            },
+            dashboard: {
+                deps: ["jquery_ui","app","morris","sparkline","jvectormap","jvectormapworld","knobchart","dateranger","datepicker","wysihtml5","icheck","appdemo"],
+                exports: "dashboard"
+            },
+            chat: {
+                deps: ["jquery"],
+                exports: "chat"
+            },
+            icheck: {
+                deps: ["jquery"],
+                exports: "icheck"
+            },
+            eve: {
+                exports: "eve"
+            },
+            raphael: {
+                deps: ["eve"],
+                exports: "Raphael"
+            },
+            morris: {
+                deps: ["raphael"],
+                exports: "morris"
+            },
+            jvectormap: {
+                deps: ["jquery"],
+                exports: "jvectormap"
+
+            },
+            jvectormapworld: {
+                deps: ["jvectormap", "jquery"]
+            },
+            knobchart: {
+                deps: ["jquery"],
+                exports: "knobchart"
+            },
+
+            dateranger:{
+                deps: ["jquery"],
+                exports: "dateraner"
+            },
+
+            datepicker: {
+                deps: ["bootstrap", "jquery"],
+                exports: "datepicker"
+            },
+            wysihtml5: {
+                deps: ["bootstrap", "jquery"],
+                exports: "wysihtml5"
+            },
+              appdemo: {
+                 deps: ["app"],
+                 exports: "appdemo"
+             },
+            datatables: {
+                deps: ["jquery"],
+                exports: "datatables"
+            },
+            bootstrap_datatables: {
+                deps: ["jquery", "datatables"],
+                exports: "bootstrap_datatables"
+            },
+            lawnchair: {
+                exports: "Lawnchair"
+            },
+            conekta: {
+                deps: ["jquery"],
+                exports: "Conekta"
+            },
+            undo: {
+                exports: "Undo"
+            },
+            redoundo: {
+                exports: "Redoundo"
+            },
+            bootstrap_editable: {
+                deps: ["bootstrap","jquery_ui"]
+            },
+            address: {
+                deps: ["bootstrap_editable"]
+            },
+            js_grid: {
+                deps: ["jquery"]
+            },
+            echarts:{
+                exports: "echarts"
+            },
+            combodate: {
+                exports: "combodate"
+            },
+            moment:{
+                deps: ["jquery","combodate"],
+                exports: "moment"
+            }
+
+
+
+
+        }
+    });
+
+</script>

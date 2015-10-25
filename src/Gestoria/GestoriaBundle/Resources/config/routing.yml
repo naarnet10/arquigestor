@@ -1,0 +1,3 @@
+gestoria_homepage:
+    path:     /
+    defaults: { _controller: GestoriaBundle:Gestoria:index }

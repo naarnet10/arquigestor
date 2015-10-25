@@ -1,0 +1,15 @@
+consultor_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ConsultorBundle:Consultor:index }
+admin:
+    path:    /admin
+    defaults: {_controller:ConsultorBundle:Consultor:admin}     
+login:
+    path:    /admin/login
+    defaults: {_controller:ConsultorBundle:Consultor:login}
+login_check:
+    path:    /admin/login_check
+logout:
+    path:    /admin/logout    
+   
+    
