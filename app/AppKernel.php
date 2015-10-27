@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Gestoria\GestoriaBundle\GestoriaBundle(),
             new Ps\PdfBundle\PsPdfBundle(),
-//            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Gestoria\AdminBundle\AdminBundle(),
         );
