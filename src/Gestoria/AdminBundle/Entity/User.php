@@ -169,7 +169,7 @@ class User implements UserInterface, \Serializable {
      */
     public function setPassword($password) {
         $confg = Yaml::parse(__DIR__ . '/../../../../app/config/security.yml');
-        $params = $confg['security']['encoders']["Gestoria\\ConsultorBundle\\Entity\\User"];//Nombre de la clase hardcoded ya que si usas get_class($this) a veces regresa Proxies\__CG__\Apptibase\SafetyBundle\Entity\User
+        $params = $confg['security']['encoders']["Gestoria\\AdminBundle\\Entity\\User"];//Nombre de la clase hardcoded ya que si usas get_class($this) a veces regresa 
         $encode = new MessageDigestPasswordEncoder(
                 $params['algorithm'], true, $params['iterations']
         );
@@ -232,9 +232,9 @@ class User implements UserInterface, \Serializable {
     /**
      * Add user_roles
      *
-     * @param Gestoria\ConsultorBundle\Entity\Role $userRoles
+     * @param Gestoria\AdminBundle\Entity\Role $userRoles
      */
-    public function addRole(\Gestoria\ConsultorBundle\Entity\Role $userRoles) {
+    public function addRole(\Gestoria\AdminBundle\Entity\Role $userRoles) {
         $this->user_roles[] = $userRoles;
     }
 
@@ -253,15 +253,15 @@ class User implements UserInterface, \Serializable {
 
 
     public function getClass() {
-        return "ConsultorBundle:User";
+        return "AdminBundle:User";
     }
     /**
      * Add user_roles
      *
-     * @param \Gestoria\ConsultorBundle\Entity\Role $userRoles
+     * @param \Gestoria\AdminBundle\Entity\Role $userRoles
      * @return User
      */
-    public function addUserRole(\Gestoria\ConsultorBundle\Entity\Role $userRoles)
+    public function addUserRole(\Gestoria\AdminBundle\Entity\Role $userRoles)
     {
         $this->user_roles[] = $userRoles;
     
@@ -271,9 +271,9 @@ class User implements UserInterface, \Serializable {
     /**
      * Remove user_roles
      *
-     * @param \Gestoria\ConsultorBundle\Entity\Role $userRoles
+     * @param \Gestoria\AdminBundle\Entity\Role $userRoles
      */
-    public function removeUserRole(\Gestoria\ConsultorBundle\Entity\Role $userRoles)
+    public function removeUserRole(\Gestoria\AdminBundle\Entity\Role $userRoles)
     {
         $this->user_roles->removeElement($userRoles);
     }

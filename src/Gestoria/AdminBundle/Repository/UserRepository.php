@@ -22,7 +22,7 @@ class UserRepository extends EntityRepository implements ContainerAwareInterface
      public function getList(){
         $qb = $this->getEntityManager()
             ->createQueryBuilder()
-            ->from("SafetyBundle:User", "user")
+            ->from("AdminBundle:User", "user")
             ->select("user");
                 
         $aclHelper = $this->container->get('acl.helper'); //se llama al helper
