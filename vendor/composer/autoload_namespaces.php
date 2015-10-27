@@ -15,7 +15,6 @@ return array(
     'Ps\\PdfBundle' => array($vendorDir . '/psliwa/pdf-bundle'),
     'PHPPdf' => array($vendorDir . '/psliwa/php-pdf/lib'),
     'Knp\\Snappy' => array($vendorDir . '/knplabs/knp-snappy/src'),
-    'Knp\\Bundle\\SnappyBundle' => array($vendorDir . '/knplabs/knp-snappy-bundle'),
     'Imagine' => array($vendorDir . '/psliwa/php-pdf/lib'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
@@ -26,7 +25,6 @@ return array(
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib'),
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib'),
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib'),
-    'Doctrine\\Bundle\\FixturesBundle' => array($vendorDir . '/doctrine/doctrine-fixtures-bundle'),
     'Doctrine\\Bundle\\DoctrineCacheBundle' => array($vendorDir . '/doctrine/doctrine-cache-bundle'),
     'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

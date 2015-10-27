@@ -207,6 +207,11 @@ class GetSetMethodNormalizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array(1, 2, 3), $obj->getBaz());
     }
 
+    /**
+     * @see https://bugs.php.net/62715
+     *
+     * @requires PHP 5.3.17
+     */
     public function testConstructorDenormalizeWithOptionalDefaultArgument()
     {
         $obj = $this->normalizer->denormalize(
@@ -214,6 +219,28 @@ class GetSetMethodNormalizerTest extends \PHPUnit_Framework_TestCase
             __NAMESPACE__.'\GetConstructorArgsWithDefaultValueDummy', 'any');
         $this->assertEquals(array(), $obj->getFoo());
         $this->assertEquals('test', $obj->getBar());
+    }
+
+    /**
+     * @requires PHP 5.6
+     */
+    public function testConstructorDenormalizeWithVariadicArgument()
+    {
+        $obj = $this->normalizer->denormalize(
+            array('foo' => array(1, 2, 3)),
+            'Symfony\Component\Serializer\Tests\Fixtures\VariadicConstructorArgsDummy', 'any');
+        $this->assertEquals(array(1, 2, 3), $obj->getFoo());
+    }
+
+    /**
+     * @requires PHP 5.6
+     */
+    public function testConstructorDenormalizeWithMissingVariadicArgument()
+    {
+        $obj = $this->normalizer->denormalize(
+            array(),
+            'Symfony\Component\Serializer\Tests\Fixtures\VariadicConstructorArgsDummy', 'any');
+        $this->assertEquals(array(), $obj->getFoo());
     }
 
     public function testConstructorWithObjectDenormalize()
@@ -226,6 +253,12 @@ class GetSetMethodNormalizerTest extends \PHPUnit_Framework_TestCase
         $obj = $this->normalizer->denormalize($data, __NAMESPACE__.'\GetConstructorDummy', 'any');
         $this->assertEquals('foo', $obj->getFoo());
         $this->assertEquals('bar', $obj->getBar());
+    }
+
+    public function testConstructorWArgWithPrivateMutator()
+    {
+        $obj = $this->normalizer->denormalize(array('foo' => 'bar'), __NAMESPACE__.'\ObjectConstructorArgsWithPrivateMutatorDummy', 'any');
+        $this->assertEquals('bar', $obj->getFoo());
     }
 
     public function testGroupsNormalize()
@@ -511,14 +544,20 @@ class GetSetMethodNormalizerTest extends \PHPUnit_Framework_TestCase
     public function testDenormalizeNonExistingAttribute()
     {
         $this->assertEquals(
-            new PropertyDummy(),
-            $this->normalizer->denormalize(array('non_existing' => true), __NAMESPACE__.'\PropertyDummy')
+            new GetSetDummy(),
+            $this->normalizer->denormalize(array('non_existing' => true), __NAMESPACE__.'\GetSetDummy')
         );
     }
 
     public function testNoTraversableSupport()
     {
         $this->assertFalse($this->normalizer->supportsNormalization(new \ArrayObject()));
+    }
+
+    public function testPrivateSetter()
+    {
+        $obj = $this->normalizer->denormalize(array('foo' => 'foobar'), __NAMESPACE__.'\ObjectWithPrivateSetterDummy');
+        $this->assertEquals('bar', $obj->getFoo());
     }
 }
 
@@ -724,5 +763,39 @@ class GetCamelizedDummy
     public function getBar_foo()
     {
         return $this->bar_foo;
+    }
+}
+
+class ObjectConstructorArgsWithPrivateMutatorDummy
+{
+    private $foo;
+
+    public function __construct($foo)
+    {
+        $this->setFoo($foo);
+    }
+
+    public function getFoo()
+    {
+        return $this->foo;
+    }
+
+    private function setFoo($foo)
+    {
+        $this->foo = $foo;
+    }
+}
+
+class ObjectWithPrivateSetterDummy
+{
+    private $foo = 'bar';
+
+    public function getFoo()
+    {
+        return $this->foo;
+    }
+
+    private function setFoo($foo)
+    {
     }
 }

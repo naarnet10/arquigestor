@@ -155,6 +155,11 @@ class ObjectNormalizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array(1, 2, 3), $obj->getBaz());
     }
 
+    /**
+     * @see https://bugs.php.net/62715
+     *
+     * @requires PHP 5.3.17
+     */
     public function testConstructorDenormalizeWithOptionalDefaultArgument()
     {
         $obj = $this->normalizer->denormalize(
